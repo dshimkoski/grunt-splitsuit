@@ -1,0 +1,4 @@
+.Cmp > .Cmp-sub {}
+.v1-Cmp > .Cmp-sub {width:100px}
+aside .v2-Cmp > .Cmp-sub--modified {width:100px}
+.v2-Cmp > .Cmp-sub {width:300px}
