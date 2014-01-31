@@ -1,10 +1,10 @@
 .Cmp > .Cmp-sub {}
 
 @media (max-width: 25em) {
-.v1-Cmp > .Cmp-sub {width:100px}
+.v1-Cmp > .Cmp-sub {width:100px;color:blue}
 }
 @media (min-width: 25em) and (max-width: 50em) {
-aside .v2-Cmp > .Cmp-sub--modified {width:100px}
+aside .v2-Cmp > .Cmp-sub--modified {width:100px;color:blue}
 .v2-Cmp > .Cmp-sub {width:300px}
 }
 @media (min-width: 50em) {

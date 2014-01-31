@@ -56,30 +56,35 @@ module.exports = function(grunt) {
 
       var ie = '', css = ['','','',''];
 
-      function group(s) {
-        css[n] += v[n][s].join(lf)+lf;
-        if (o.iebp >= n) {
-          ie += v[n][s]+lf;
+      for (var n = 0; n < 4; n++) {
+        var sel = Object.keys(v[n]);
+        for (var i = 0, len = sel.length; i < len; i++) {
+            var s = sel[i];
+            css[n] += v[n][s].join(lf)+lf;
+            if (!o.bp[n] || o.iebp === n) {
+              ie += v[n][s]+lf;
+            }
         }
       }
 
-      for (var n = 0, len = 4; n < len; n++) {
-        Object.keys(v[n]).forEach(group);
-      }
-
+      var content = true;
       css = css.map(function(rules, n) {
+        if (!rules.length) {
+            content = false;
+            return '';
+        }
         return o.bp[n] ? '@media '+o.bp[n]+' {'+lf+rules+'}' : rules;
       }).join(lf);
 
-      if (!css.length) {
-        grunt.log.warn('Responsive stylesheet not written, no rules');
+      if (!content) {
+        grunt.log.warn('Responsive stylesheet not written because CSS was empty.');
       } else {
         grunt.file.write(f.dest, css);
         grunt.log.ok('Created responsive stylesheet ' + f.dest);
       }
 
       if (!ie.length) {
-        grunt.log.warn('IE stylesheet not written, no rules');
+        grunt.log.warn('IE stylesheet not written because CSS was empty.');
       } else {
         var dest = f.dest.replace(/\.css$/, '-ie.css');
         grunt.file.write(dest, ie);

@@ -1,5 +1,5 @@
 .Cmp > .Cmp-sub {}
 .v1-Cmp > .Cmp-sub,
-aside .v2-Cmp > .Cmp-sub--modified { width: 100px; }
+aside .v2-Cmp > .Cmp-sub--modified { width: 100px; color: blue; }
 .v2-Cmp > .Cmp-sub { width: 300px; }
 .v3-Cmp > .Cmp-sub {}
